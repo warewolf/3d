@@ -10,10 +10,9 @@ mount_depth = 38.1; // 1.5"
 mount_width = width;
 mount_height = 12;
 
-hook_height = 50; // 2"
+hook_height = 12; // 2"
 hook_width = width; // 1"
-hook_depth = 50; // 2"
-hook_height = 12;
+hook_depth = 57; // 2"
 
 // ____ shoulder
 // | 
@@ -33,7 +32,7 @@ module mount_arm() {
 
 
 module mount_shoulder() {
-  translate([0,0,mount_depth]) cube([hook_width,mount_depth-10,hook_height],false);
+  translate([0,0,mount_depth]) cube([hook_width,mount_depth-10,hook_height-6],false);
 }
 
 module hook() {
@@ -69,14 +68,28 @@ module mount_hand_lip( width, diameter, length, height) {
   }
 }
 
-module main() {
-  union() {
-    color("green") mount_shoulder();
-    color("red") mount_arm();
-    translate([12.5,0,0]) mount_hand(diameter = 32, width = 25, height = 12, length = hook_depth);
-  }
-
+module screwdriver_hole(){
+  translate([width/2,17,-3]) color("blue") cylinder(h=mount_depth+mount_depth, d = screw_dia, center = false);
 }
 
+module screw_head_hole() {
+  translate([width/2,17,37]) color("pink") cylinder(h=4, d = .80*washer_dia, center = false);
+}
 
-main();
+module main() {
+
+  difference() {
+    minkowski() {
+      sphere(1.5);
+      union() {
+	color("green") mount_shoulder();
+	color("red") mount_arm();
+	rotate([-3,0,0]) translate([12.5,0,0]) mount_hand(diameter = 32, width = 25, height = 12, length = hook_depth);
+      }
+    }
+    screwdriver_hole();
+    screw_head_hole();
+  }
+}
+
+rotate([00,-90,0]) main();
