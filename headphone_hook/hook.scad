@@ -73,7 +73,7 @@ module screwdriver_hole(){
 }
 
 module screw_head_hole() {
-  translate([width/2,17,37]) color("pink") cylinder(h=4, d = .80*washer_dia, center = false);
+  translate([width/2,17,36]) color("pink") cylinder(h=4, d = .80*washer_dia, center = false);
 }
 
 module main() {
@@ -92,4 +92,5 @@ module main() {
   }
 }
 
-rotate([00,-90,0]) main();
+rotate([00,-90,0])
+main();
