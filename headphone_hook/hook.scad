@@ -1,8 +1,9 @@
 // http://www.openscad.org/cheatsheet/index.html?version=2015.03 
 $fn = 64;
 
-screw_dia = 3.505; // #6, .13", aka 9/64"
+screw_dia = 4.505; // #6, .13", aka 9/64"
 washer_dia = 9.525; // 3.8", #6 washer.
+screwdriver_dia = 5.5;
 
 width = 25;
 
@@ -12,7 +13,7 @@ mount_height = 12;
 
 hook_height = 12; // 2"
 hook_width = width; // 1"
-hook_depth = 57; // 2"
+hook_depth = 57+mount_height; // 2"
 
 // ____ shoulder
 // | 
@@ -68,8 +69,12 @@ module mount_hand_lip( width, diameter, length, height) {
   }
 }
 
+module screw_hole() {
+  translate([width/2,17,mount_depth]) color("purple") cylinder(h=16, d = screw_dia, center = false);
+}
+
 module screwdriver_hole(){
-  translate([width/2,17,-3]) color("blue") cylinder(h=mount_depth+mount_depth, d = screw_dia, center = false);
+  translate([width/2,17,-3]) color("blue") cylinder(h=16, d = screwdriver_dia, center = false);
 }
 
 module screw_head_hole() {
@@ -87,6 +92,7 @@ module main() {
 	rotate([-3,0,0]) translate([12.5,0,0]) mount_hand(diameter = 32, width = 25, height = 12, length = hook_depth);
       }
     }
+    screw_hole();
     screwdriver_hole();
     screw_head_hole();
   }
