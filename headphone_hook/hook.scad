@@ -1,5 +1,5 @@
 // http://www.openscad.org/cheatsheet/index.html?version=2015.03 
-$fn = 16;
+$fn = 64;
 
 screw_dia = 3.505; // #6, .13", aka 9/64"
 washer_dia = 9.525; // 3.8", #6 washer.
