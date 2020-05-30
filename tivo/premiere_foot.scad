@@ -21,7 +21,7 @@ module main( width = 41.5, height = 7, id=10.5, screw_rest_height=2.6, screw_dia
   }
 }
 
-difference() {
+//difference() {
   main( width=30/2, id=10.5, inset_scale=.75);
-  rotate([0,0,240]) cube([100,100,100]);
-}
+//  rotate([0,0,240]) cube([100,100,100]);
+//}
