@@ -20,7 +20,7 @@ module mount(){
       translate([0,0,tongue_height2]) sphere(r=ball_bump_d+.025, $fn=36); // bump sphere at the top
       difference() {
 	hull() {
-	  translate([0,tongue_length,0]) cylinder(d=tongue_width, h=tongue_height1); // body short
+	  translate([0,tongue_length,0]) cylinder(d=tongue_width, h=tongue_height1, $fn=36); // body short
 	  cylinder(d=tongue_width, h=tongue_height2, $fn=36); // body tall
 	}
 	translate([0,0,0-(.5*slop)]) cylinder(r=bottom_inset_cyl+slop,h=5+slop, $fn=36); // cutout at back of mount
