@@ -9,7 +9,7 @@ module magnets(inner = 4.25, outer = 16, magnet_radius=3.35/2) {
     rotate([0,0,spin]) translate([.5*outer,0,0]) cylinder(h=.95, r2=magnet_radius,r1=magnet_radius*1.15,$fn=100);
     rotate([0,0,spin]) translate([.5*inner,0,0]) cylinder(h=.95, r2=magnet_radius,r1=magnet_radius*1.15,$fn=100);
   }
-  if (0) {
+  if (1) { // leave this enabled, makes for a faster print
     hull() {
       for (spin = [ 0,180]) {
 	rotate([0,0,spin]) translate([.5*(outer-magnet_radius),0,0]) cylinder(h=.95, r2=magnet_radius/2,r1=.5*magnet_radius*1.15,$fn=100);
